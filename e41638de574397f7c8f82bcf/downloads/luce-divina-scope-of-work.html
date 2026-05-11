@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scope of Work - Luce Divina E-Commerce Upgrade | FuturProof Labs</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    @media print {
+      body { font-size: 10pt; }
+      .page-break { page-break-before: always; }
+      .no-break { page-break-inside: avoid; }
+      @page { margin: 0.75in; size: letter; }
+    }
+
+    .container {
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0.75in;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 24px;
+      border-bottom: 3px solid #1a1a1a;
+      margin-bottom: 32px;
+    }
+
+    .logo img {
+      height: 80px;
+      width: auto;
+    }
+
+    .document-info {
+      text-align: right;
+      font-size: 9pt;
+      color: #666;
+    }
+
+    .document-info strong {
+      color: #1a1a1a;
+      font-size: 10pt;
+    }
+
+    .title-section {
+      text-align: center;
+      padding: 40px 0;
+      margin-bottom: 32px;
+    }
+
+    .title-section h1 {
+      font-size: 28pt;
+      font-weight: 300;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .title-section .subtitle {
+      font-size: 14pt;
+      color: #666;
+      font-weight: 400;
+    }
+
+    .title-section .client {
+      margin-top: 24px;
+      font-size: 11pt;
+    }
+
+    .title-section .client strong {
+      font-size: 14pt;
+    }
+
+    .exec-summary {
+      background: #f8f8f8;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .exec-summary h2 {
+      font-size: 12pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #888;
+      margin-bottom: 16px;
+    }
+
+    .exec-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .exec-summary-item {
+      text-align: center;
+    }
+
+    .exec-summary-item .label {
+      font-size: 9pt;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .exec-summary-item .value {
+      font-size: 18pt;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-top: 4px;
+    }
+
+    .exec-summary-item .value.price {
+      color: #2563eb;
+    }
+
+    h2.section-title {
+      font-size: 14pt;
+      font-weight: 600;
+      color: #1a1a1a;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #1a1a1a;
+      margin-bottom: 20px;
+      margin-top: 32px;
+    }
+
+    h3.subsection-title {
+      font-size: 12pt;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    h3.subsection-title .value-tag {
+      font-size: 10pt;
+      font-weight: 500;
+      color: #2563eb;
+    }
+
+    .deliverables-box {
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+
+    .deliverables-box h4 {
+      font-size: 9pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .deliverables-box ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .deliverables-box li {
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+      font-size: 10pt;
+    }
+
+    .deliverables-box li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 600;
+    }
+
+    .deliverables-box .hours {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #e5e5e5;
+      font-size: 9pt;
+      color: #888;
+      font-style: italic;
+    }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .pricing-table th {
+      background: #f8f8f8;
+      font-size: 9pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #888;
+    }
+
+    .pricing-table td {
+      font-size: 10pt;
+    }
+
+    .pricing-table td.price {
+      text-align: right;
+      font-weight: 500;
+    }
+
+    .pricing-table tr.total {
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    .pricing-table tr.total td {
+      font-weight: 600;
+      font-size: 11pt;
+      border-bottom: none;
+    }
+
+    .pricing-table tr.savings {
+      background: #ecfdf5;
+    }
+
+    .pricing-table tr.savings td {
+      color: #059669;
+      font-weight: 500;
+    }
+
+    .pricing-table tr.investment {
+      background: #2563eb;
+      color: #fff;
+    }
+
+    .pricing-table tr.investment td {
+      font-weight: 700;
+      font-size: 12pt;
+      border-bottom: none;
+    }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .addon-category {
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .addon-category h4 {
+      font-size: 10pt;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+
+    .addon-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      font-size: 9pt;
+    }
+
+    .addon-item .name { color: #444; }
+    .addon-item .price { color: #888; font-weight: 500; }
+
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: #e5e5e5;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 20px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -21px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #2563eb;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px #2563eb;
+    }
+
+    .timeline-item h4 {
+      font-size: 11pt;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .timeline-item ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .timeline-item li {
+      font-size: 9pt;
+      color: #666;
+      padding: 2px 0;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .timeline-item li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #888;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border: 1px solid #e5e5e5;
+      font-size: 10pt;
+    }
+
+    .comparison-table th {
+      background: #f8f8f8;
+      font-weight: 600;
+    }
+
+    .comparison-table th:first-child { width: 35%; }
+    .comparison-table td:nth-child(2) { color: #888; }
+    .comparison-table td:nth-child(3) { color: #2563eb; font-weight: 500; }
+
+    .responsibilities-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .responsibility-box {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .responsibility-box h4 {
+      font-size: 10pt;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #92400e;
+    }
+
+    .responsibility-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .responsibility-box li {
+      font-size: 9pt;
+      padding: 3px 0;
+      padding-left: 14px;
+      position: relative;
+      color: #78350f;
+    }
+
+    .responsibility-box li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #f59e0b;
+    }
+
+    .payment-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .payment-option {
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .payment-option h4 {
+      font-size: 10pt;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .payment-step {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 9pt;
+    }
+
+    .payment-step .amount { font-weight: 600; }
+
+    /* Package Options */
+    .package-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .package-option {
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 28px;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .package-option.recommended {
+      border-color: #1a1a1a;
+      background: #fafafa;
+    }
+
+    .package-option .badge {
+      position: absolute;
+      top: -12px;
+      left: 24px;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 8pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border-radius: 4px;
+    }
+
+    .package-option h3 {
+      font-size: 18pt;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .package-option .tagline {
+      font-size: 10pt;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .package-option .price {
+      font-size: 28pt;
+      font-weight: 300;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+
+    .package-option .price span {
+      font-size: 11pt;
+      color: #888;
+      font-weight: 400;
+    }
+
+    .package-option ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .package-option ul li {
+      font-size: 10pt;
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .package-option ul li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #22c55e;
+      font-weight: 600;
+    }
+
+    .package-option.recommended ul li:before {
+      color: #1a1a1a;
+    }
+
+    .package-option .note {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #e0e0e0;
+      font-size: 9pt;
+      color: #666;
+      font-style: italic;
+    }
+
+    .signature-section {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 2px solid #1a1a1a;
+    }
+
+    .signature-section h2 {
+      font-size: 14pt;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .signature-section p {
+      font-size: 10pt;
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .signature-box label {
+      font-size: 9pt;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .signature-line {
+      border-bottom: 1px solid #1a1a1a;
+      height: 40px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .date-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 9pt;
+      color: #888;
+    }
+
+    .date-line .line {
+      flex: 1;
+      border-bottom: 1px solid #ccc;
+      height: 20px;
+    }
+
+    .footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #e5e5e5;
+      text-align: center;
+      font-size: 9pt;
+      color: #888;
+    }
+
+    .footer a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .text-center { text-align: center; }
+    .mt-4 { margin-top: 16px; }
+    .mb-4 { margin-bottom: 16px; }
+
+    .note {
+      font-size: 9pt;
+      color: #888;
+      font-style: italic;
+      margin-top: 8px;
+    }
+
+    .highlight-box {
+      background: #eff6ff;
+      border: 1px solid #2563eb;
+      border-radius: 6px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+
+    .highlight-box p {
+      font-size: 10pt;
+      color: #1e40af;
+      margin: 0;
+    }
+
+    .highlight-box strong { font-weight: 600; }
+  </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5G9CL9B5"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <img src="Future Proofed Logo Pack /logo_files/FutureProof Black.png" alt="FutureProof">
+      </div>
+      <div class="document-info">
+        <strong>Scope of Work</strong><br>
+        Document #: FP-2026-001<br>
+        Date: January 11, 2026<br>
+        Valid for: 30 days
+      </div>
+    </header>
+
+    <!-- Title Section -->
+    <section class="title-section">
+      <h1>Website Customization</h1>
+      <p class="subtitle">Shopify Enhancement Options</p>
+      <div class="client">
+        Prepared for<br>
+        <strong>Luce Divina Corp</strong>
+      </div>
+    </section>
+
+    <!-- Two Options -->
+    <h2 class="section-title">Select Your Investment Level</h2>
+    <p style="text-align: center; color: #1a1a1a; font-size: 12pt; font-weight: 500; margin-bottom: 8px;">We've prepared two packages tailored to your goals:</p>
+    <p style="text-align: center; color: #666; margin-bottom: 24px;">Both options build on your existing Dawn theme — no migration required.</p>
+
+    <div class="package-options">
+      <div class="package-option" style="border-color: #22c55e; background: #f0fdf4;">
+        <div class="badge" style="background: #22c55e;">Budget-Friendly</div>
+        <h3>Elevate</h3>
+        <p class="tagline">Enhanced Dawn Theme + CRM Foundation</p>
+        <div class="price">$4,950 <span>one-time</span></div>
+
+        <h5 style="font-size: 9pt; text-transform: uppercase; color: #888; margin: 16px 0 8px; letter-spacing: 0.05em;">Theme Enhancement</h5>
+        <ul>
+          <li>Modify existing Dawn theme</li>
+          <li>Lifestyle imagery integration</li>
+          <li>Micro-animations & transitions</li>
+          <li>Custom sections (About, Craftsmanship)</li>
+          <li>Mobile-optimized luxury experience</li>
+        </ul>
+
+        <h5 style="font-size: 9pt; text-transform: uppercase; color: #888; margin: 16px 0 8px; letter-spacing: 0.05em;">Shopify-Native CRM Integration</h5>
+        <ul>
+          <li>Automated customer tagging</li>
+          <li>Lifecycle stage tracking</li>
+          <li>B2B vs D2C contact separation</li>
+          <li>Custom properties (scent preferences)</li>
+        </ul>
+
+        <h5 style="font-size: 9pt; text-transform: uppercase; color: #888; margin: 16px 0 8px; letter-spacing: 0.05em;">Content Pages</h5>
+        <ul>
+          <li>Blog page development</li>
+          <li>About/Story pages</li>
+          <li>Product page enhancements</li>
+        </ul>
+
+        <p class="note">Best for: Brands wanting a polished luxury look with essential CRM foundations.</p>
+      </div>
+
+      <div class="package-option recommended">
+        <div class="badge">Recommended</div>
+        <h3>Transform</h3>
+        <p class="tagline">Complete Luxury E-commerce Experience</p>
+        <div class="price">$9,950 <span>one-time</span></div>
+
+        <p style="font-size: 10pt; color: #666; margin-bottom: 12px; font-style: italic;">Everything in Elevate, plus:</p>
+
+        <h5 style="font-size: 9pt; text-transform: uppercase; color: #888; margin: 12px 0 8px; letter-spacing: 0.05em;">Advanced CRM & Segmentation</h5>
+        <ul>
+          <li>Customer segmentation (VIP, one-time, dormant)</li>
+          <li>Purchase behavior tracking</li>
+          <li>Order status lookup</li>
+        </ul>
+
+        <h5 style="font-size: 9pt; text-transform: uppercase; color: #888; margin: 12px 0 8px; letter-spacing: 0.05em;">Interactive Tools & Features</h5>
+        <ul>
+          <li>Scent Finder Quiz integration</li>
+          <li>Product recommendations by scent preference</li>
+          <li>Burn Time Calculator</li>
+          <li>AR Room Visualizer — see candles in your space via mobile camera</li>
+          <li>Build-Your-Own Gift Set</li>
+          <li>Personalization/Engraving Preview</li>
+          <li>Ingredient Transparency Checker</li>
+        </ul>
+
+        <h5 style="font-size: 9pt; text-transform: uppercase; color: #888; margin: 12px 0 8px; letter-spacing: 0.05em;">Notifications & Tracking</h5>
+        <ul>
+          <li>Cart abandonment push notifications</li>
+          <li>Sales & order notifications</li>
+          <li>Real-time shipment status w/ map visualization</li>
+        </ul>
+
+        <p class="note">Best for: Brands ready to compete with Diptyque & Jo Malone with a complete luxury digital experience.</p>
+      </div>
+    </div>
+
+    <!-- Executive Summary -->
+    <section class="exec-summary no-break">
+      <h2>Transform Package Summary</h2>
+      <div class="exec-summary-grid">
+        <div class="exec-summary-item">
+          <div class="label">Investment</div>
+          <div class="value price">$9,950</div>
+        </div>
+        <div class="exec-summary-item">
+          <div class="label">Timeline</div>
+          <div class="value">3-4 Weeks</div>
+        </div>
+        <div class="exec-summary-item">
+          <div class="label">Approach</div>
+          <div class="value">Custom Redesign</div>
+        </div>
+        <div class="exec-summary-item">
+          <div class="label">Est. Hours</div>
+          <div class="value">78-97</div>
+        </div>
+      </div>
+      <p class="note text-center mt-4">A complete custom luxury e-commerce redesign built from the ground up to compete with Diptyque & Jo Malone.</p>
+    </section>
+
+    <!-- What's Included -->
+    <h2 class="section-title">What's Included</h2>
+
+    <!-- 1. Theme Enhancement -->
+    <section class="no-break">
+      <h3 class="subsection-title">
+        1. Theme Enhancement & Luxury Styling
+        <span class="value-tag">Value: $2,500</span>
+      </h3>
+      <div class="deliverables-box">
+        <h4>Typography & Branding</h4>
+        <ul>
+          <li>Custom luxury font integration (serif + sans pairing)</li>
+          <li>Typography scale & spacing optimization</li>
+          <li>Consistent brand application across all pages</li>
+        </ul>
+      </div>
+      <div class="deliverables-box">
+        <h4>Visual Design</h4>
+        <ul>
+          <li>Refined color palette implementation</li>
+          <li>Elevated spacing system (luxury whitespace)</li>
+          <li>Hover states & micro-interactions</li>
+        </ul>
+      </div>
+      <div class="deliverables-box">
+        <h4>Global Components</h4>
+        <ul>
+          <li>Enhanced header with luxury styling</li>
+          <li>Mega-menu navigation with imagery</li>
+          <li>Refined footer with trust elements</li>
+          <li>Mobile navigation optimization</li>
+        </ul>
+        <p class="hours">Estimated: 12-15 hours</p>
+      </div>
+    </section>
+
+    <!-- 2. Homepage -->
+    <section class="no-break">
+      <h3 class="subsection-title">
+        2. Homepage Redesign
+        <span class="value-tag">Value: $1,500</span>
+      </h3>
+      <div class="deliverables-box">
+        <h4>Deliverables</h4>
+        <ul>
+          <li>Full-width lifestyle hero with overlay text</li>
+          <li>Mobile-optimized hero variant</li>
+          <li>Elevated product cards with hover effects</li>
+          <li>Brand story teaser section with CTA</li>
+          <li>Press logos / "As Seen In" section</li>
+          <li>Key differentiators (organic, non-toxic, sustainable)</li>
+          <li>Styled newsletter capture section</li>
+        </ul>
+        <p class="hours">Estimated: 10-12 hours</p>
+      </div>
+    </section>
+
+    <!-- 3. Product Page -->
+    <section class="no-break">
+      <h3 class="subsection-title">
+        3. Product Page Enhancement
+        <span class="value-tag">Value: $2,000</span>
+      </h3>
+      <div class="deliverables-box">
+        <h4>Product Experience</h4>
+        <ul>
+          <li>Enhanced gallery with zoom capability</li>
+          <li>Scent notes section (Top / Heart / Base)</li>
+          <li>Sensory storytelling description layout</li>
+          <li>Product details accordion (Ingredients, Care, Shipping)</li>
+          <li>Size/burn time specifications</li>
+          <li>Room size recommendation</li>
+        </ul>
+      </div>
+      <div class="deliverables-box">
+        <h4>Trust & Conversion Elements</h4>
+        <ul>
+          <li>Trust badges (Organic, Non-Toxic, Sustainable)</li>
+          <li>Shipping & returns info</li>
+          <li>"Why $699?" value proposition section</li>
+          <li>Customer reviews section</li>
+          <li>"Complete the Experience" cross-sell section</li>
+        </ul>
+      </div>
+      <div class="deliverables-box">
+        <h4>Product Data Architecture</h4>
+        <ul>
+          <li>Scent notes fields (top, heart, base)</li>
+          <li>Burn time & room size data</li>
+          <li>Ingredients list structure</li>
+        </ul>
+        <p class="hours">Estimated: 14-16 hours</p>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- 4. Content Pages -->
+    <section class="no-break">
+      <h3 class="subsection-title">
+        4. Custom Content Pages (5 Pages)
+        <span class="value-tag">Value: $2,000</span>
+      </h3>
+      <div class="deliverables-box">
+        <h4>Pages Included</h4>
+        <ul>
+          <li><strong>About / Our Story</strong> — Founder story, mission & values, team/studio imagery</li>
+          <li><strong>Craftsmanship / How It's Made</strong> — Process steps, ingredient sourcing, quality commitment</li>
+          <li><strong>Sustainability</strong> — Environmental commitments, certifications, packaging practices</li>
+          <li><strong>FAQ</strong> — Accordion-style layout, categorized questions, contact CTA</li>
+          <li><strong>Contact</strong> — Contact form, B2B inquiry routing, response time expectations</li>
+        </ul>
+        <p class="hours">Estimated: 12-15 hours</p>
+      </div>
+    </section>
+
+    <!-- 5. Collection Page -->
+    <section class="no-break">
+      <h3 class="subsection-title">
+        5. Collection Page Enhancement
+        <span class="value-tag">Value: $800</span>
+      </h3>
+      <div class="deliverables-box">
+        <h4>Deliverables</h4>
+        <ul>
+          <li>Hero banner with collection description</li>
+          <li>Enhanced product grid layout</li>
+          <li>Product card hover effects</li>
+          <li>Mobile-optimized grid</li>
+        </ul>
+        <p class="hours">Estimated: 4-5 hours</p>
+      </div>
+    </section>
+
+    <!-- 6. Scent Quiz -->
+    <section class="no-break">
+      <h3 class="subsection-title">
+        6. Scent Finder Quiz
+        <span class="value-tag">Value: $800</span>
+      </h3>
+      <div class="deliverables-box">
+        <h4>Deliverables</h4>
+        <ul>
+          <li>4-6 question interactive quiz flow</li>
+          <li>Question/answer content creation</li>
+          <li>Results logic mapping to products</li>
+          <li>Branded results page with product recommendations</li>
+          <li>Email capture integration</li>
+          <li>Embedded quiz page on site</li>
+        </ul>
+        <p class="hours">Estimated: 6-8 hours</p>
+      </div>
+    </section>
+
+    <!-- 7. Integrations -->
+    <section class="no-break">
+      <h3 class="subsection-title">
+        7. Integrations & Technical Setup
+        <span class="value-tag">Value: $1,200</span>
+      </h3>
+      <div class="deliverables-box">
+        <h4>Email Marketing Integration</h4>
+        <ul>
+          <li>Email platform connection & customer sync</li>
+          <li>Signup forms (footer, popup, quiz)</li>
+          <li>Welcome email flow setup</li>
+          <li>Abandoned cart flow setup</li>
+          <li>Post-purchase flow setup</li>
+        </ul>
+      </div>
+      <div class="deliverables-box">
+        <h4>Analytics & Performance</h4>
+        <ul>
+          <li>Customer reviews integration & styling</li>
+          <li>Analytics tracking setup & verification</li>
+          <li>Conversion tracking (social pixels)</li>
+          <li>Image & lazy loading optimization</li>
+          <li>Core Web Vitals audit & improvements</li>
+          <li>SEO foundation (meta templates, schema markup)</li>
+        </ul>
+        <p class="hours">Estimated: 10-12 hours</p>
+      </div>
+    </section>
+
+    <!-- 8. Mobile -->
+    <section class="no-break">
+      <h3 class="subsection-title">
+        8. Mobile Optimization
+        <span class="value-tag">Value: $600</span>
+      </h3>
+      <div class="deliverables-box">
+        <h4>Deliverables</h4>
+        <ul>
+          <li>All sections responsive & tested</li>
+          <li>Touch-friendly navigation</li>
+          <li>Thumb-zone optimization for CTAs</li>
+          <li>Testing on iOS & Android devices</li>
+          <li>Tablet breakpoint optimization</li>
+        </ul>
+        <p class="hours">Estimated: 6-8 hours</p>
+      </div>
+    </section>
+
+    <!-- 9. QA -->
+    <section class="no-break">
+      <h3 class="subsection-title">
+        9. QA & Launch Support
+        <span class="value-tag">Value: $550</span>
+      </h3>
+      <div class="deliverables-box">
+        <h4>Deliverables</h4>
+        <ul>
+          <li>Cross-browser testing (Chrome, Safari, Firefox, Edge)</li>
+          <li>Device testing (Desktop, Tablet, Mobile)</li>
+          <li>Checkout flow & form testing</li>
+          <li>Link verification & content proofing</li>
+          <li>Launch checklist completion</li>
+          <li>14 days post-launch bug fixes</li>
+        </ul>
+        <p class="hours">Estimated: 4-6 hours</p>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- Pricing Summary -->
+    <h2 class="section-title">Investment Summary</h2>
+
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th class="price">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Theme Enhancement & Luxury Styling</td>
+          <td class="price">$2,500</td>
+        </tr>
+        <tr>
+          <td>Homepage Redesign</td>
+          <td class="price">$1,500</td>
+        </tr>
+        <tr>
+          <td>Product Page Enhancement</td>
+          <td class="price">$2,000</td>
+        </tr>
+        <tr>
+          <td>Custom Content Pages (5)</td>
+          <td class="price">$2,000</td>
+        </tr>
+        <tr>
+          <td>Collection Page Enhancement</td>
+          <td class="price">$800</td>
+        </tr>
+        <tr>
+          <td>Scent Finder Quiz</td>
+          <td class="price">$800</td>
+        </tr>
+        <tr>
+          <td>Integrations & Technical Setup</td>
+          <td class="price">$1,200</td>
+        </tr>
+        <tr>
+          <td>Mobile Optimization</td>
+          <td class="price">$600</td>
+        </tr>
+        <tr>
+          <td>QA & Launch Support</td>
+          <td class="price">$550</td>
+        </tr>
+        <tr class="total">
+          <td>Total Value</td>
+          <td class="price">$11,950</td>
+        </tr>
+        <tr class="investment">
+          <td>Your Investment</td>
+          <td class="price">$9,950</td>
+        </tr>
+        <tr class="savings">
+          <td>Your Savings</td>
+          <td class="price">$2,000 (17%)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <p><strong>Estimated Hours:</strong> 78-97 hours | <strong>Effective Rate:</strong> $102-128/hour</p>
+    </div>
+
+    <!-- Add-ons -->
+    <h2 class="section-title">Optional Add-Ons</h2>
+
+    <div class="addons-grid">
+      <div class="addon-category">
+        <h4>Additional Pages</h4>
+        <div class="addon-item">
+          <span class="name">B2B / Trade Program Page</span>
+          <span class="price">$800</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Gift Guide Page</span>
+          <span class="price">$600</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Candle Care Page</span>
+          <span class="price">$400</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Press / Media Page</span>
+          <span class="price">$500</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Custom Landing Page</span>
+          <span class="price">$600-1,000</span>
+        </div>
+      </div>
+      <div class="addon-category">
+        <h4>Interactive Features</h4>
+        <div class="addon-item">
+          <span class="name">Burn Time Calculator</span>
+          <span class="price">$1,200</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">AR Room Visualizer</span>
+          <span class="price">$1,000</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Build-Your-Own Gift Set</span>
+          <span class="price">$2,000</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Engraving Preview Tool</span>
+          <span class="price">$1,500</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Ingredient Transparency Tool</span>
+          <span class="price">$1,200</span>
+        </div>
+      </div>
+      <div class="addon-category">
+        <h4>Advanced Features</h4>
+        <div class="addon-item">
+          <span class="name">AI-Powered Chatbot</span>
+          <span class="price">$500</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Push Notifications</span>
+          <span class="price">$400</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Branded Order Tracking</span>
+          <span class="price">$400</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Subscription Program</span>
+          <span class="price">$800</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Loyalty & Rewards Program</span>
+          <span class="price">$600</span>
+        </div>
+      </div>
+      <div class="addon-category">
+        <h4>Content & Blog</h4>
+        <div class="addon-item">
+          <span class="name">Product Description (each)</span>
+          <span class="price">$150</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Page Content Writing (each)</span>
+          <span class="price">$300</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Blog Post (each)</span>
+          <span class="price">$200-400</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Full Content Package</span>
+          <span class="price">$1,500</span>
+        </div>
+        <div class="addon-item">
+          <span class="name">Custom Blog Template</span>
+          <span class="price">$800</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Timeline -->
+    <h2 class="section-title">Project Timeline</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>Week 1: Discovery & Design Direction</h4>
+        <ul>
+          <li>Kickoff call & asset collection (Day 1-2)</li>
+          <li>Design direction & moodboard (Day 3-4)</li>
+          <li>Client approval on direction (Day 5)</li>
+          <li>Deliverable: Approved design direction</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h4>Week 2: Core Development</h4>
+        <ul>
+          <li>Theme styling & global components</li>
+          <li>Homepage build</li>
+          <li>Product page enhancements</li>
+          <li>Collection page updates</li>
+          <li>Deliverable: Core pages in staging</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h4>Week 3: Content Pages & Features</h4>
+        <ul>
+          <li>Custom content pages (5)</li>
+          <li>Scent quiz setup</li>
+          <li>Email & analytics integrations</li>
+          <li>Deliverable: Full site in staging</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h4>Week 4: Optimization & Launch</h4>
+        <ul>
+          <li>Mobile & performance optimization</li>
+          <li>QA & testing</li>
+          <li>Client review & revisions</li>
+          <li>Launch</li>
+          <li>Deliverable: Live site</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h4>Post-Launch: 14 Days Support</h4>
+        <ul>
+          <li>Bug fixes</li>
+          <li>Minor adjustments</li>
+          <li>Handoff documentation</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Client Responsibilities -->
+    <h2 class="section-title">Client Responsibilities</h2>
+
+    <div class="responsibilities-grid">
+      <div class="responsibility-box">
+        <h4>Assets to Provide</h4>
+        <ul>
+          <li>High-resolution product photography</li>
+          <li>Lifestyle/brand imagery</li>
+          <li>Logo files (SVG, PNG)</li>
+          <li>Brand guidelines (if available)</li>
+          <li>Any existing content/copy</li>
+        </ul>
+      </div>
+      <div class="responsibility-box">
+        <h4>Content to Provide</h4>
+        <ul>
+          <li>Founder story & bio</li>
+          <li>Product descriptions (or approval of written copy)</li>
+          <li>FAQ content</li>
+          <li>Scent notes for each product</li>
+          <li>Sustainability/sourcing information</li>
+        </ul>
+      </div>
+      <div class="responsibility-box">
+        <h4>Access Required</h4>
+        <ul>
+          <li>Shopify admin access</li>
+          <li>Email marketing platform access</li>
+          <li>Analytics account access</li>
+          <li>Domain/DNS access (if needed)</li>
+          <li>Social media accounts (for pixels)</li>
+        </ul>
+      </div>
+      <div class="responsibility-box">
+        <h4>Decisions & Approvals</h4>
+        <ul>
+          <li>Timely feedback (within 48 hours)</li>
+          <li>Design direction approval</li>
+          <li>Content approval</li>
+          <li>Final launch sign-off</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Payment Terms -->
+    <h2 class="section-title">Payment Terms</h2>
+
+    <div class="payment-options">
+      <div class="payment-option">
+        <h4>Option A: Standard (Two Payments)</h4>
+        <div class="payment-step">
+          <span>50% deposit to start</span>
+          <span class="amount">$4,975</span>
+        </div>
+        <div class="payment-step">
+          <span>50% upon launch</span>
+          <span class="amount">$4,975</span>
+        </div>
+      </div>
+      <div class="payment-option">
+        <h4>Option B: Three Payments</h4>
+        <div class="payment-step">
+          <span>40% deposit to start</span>
+          <span class="amount">$3,980</span>
+        </div>
+        <div class="payment-step">
+          <span>30% at staging review</span>
+          <span class="amount">$2,985</span>
+        </div>
+        <div class="payment-step">
+          <span>30% upon launch</span>
+          <span class="amount">$2,985</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="deliverables-box">
+      <h4>Included in All Options</h4>
+      <ul>
+        <li>2 rounds of revisions per phase</li>
+        <li>14 days post-launch support</li>
+        <li>Handoff documentation</li>
+      </ul>
+    </div>
+
+    <!-- Comparison -->
+    <h2 class="section-title">Value Comparison</h2>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Typical Agency</th>
+          <th>FuturProof Labs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Website Upgrade</td>
+          <td>$45,000-75,000</td>
+          <td>$9,950</td>
+        </tr>
+        <tr>
+          <td>Timeline</td>
+          <td>8-12 weeks</td>
+          <td>3-4 weeks</td>
+        </tr>
+        <tr>
+          <td>Communication</td>
+          <td>Bi-weekly or less</td>
+          <td>Weekly calls</td>
+        </tr>
+        <tr>
+          <td>Your Contact</td>
+          <td>Junior Account Manager</td>
+          <td>Senior Strategist</td>
+        </tr>
+        <tr>
+          <td>Marketing Included</td>
+          <td>No</td>
+          <td>Available as bundle</td>
+        </tr>
+        <tr>
+          <td>Revisions</td>
+          <td>1-2 rounds total</td>
+          <td>2 rounds per phase</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <p><strong>Your Savings: 78-87%</strong> compared to typical agency pricing for equivalent scope.</p>
+    </div>
+
+    <!-- Signature -->
+    <section class="signature-section">
+      <h2>Acceptance</h2>
+      <p>By signing below, Client agrees to the scope, timeline, and terms outlined in this document. This agreement is valid for 30 days from the date above.</p>
+
+      <div class="signature-grid">
+        <div class="signature-box">
+          <label>Client</label>
+          <div class="signature-line"></div>
+          <div class="date-line">
+            <span>Date:</span>
+            <div class="line"></div>
+          </div>
+          <p style="font-size: 9pt; color: #888; margin-top: 4px;">Luce Divina Corp</p>
+        </div>
+        <div class="signature-box">
+          <label>FuturProof Labs</label>
+          <div class="signature-line"></div>
+          <div class="date-line">
+            <span>Date:</span>
+            <div class="line"></div>
+          </div>
+          <p style="font-size: 9pt; color: #888; margin-top: 4px;">FuturProof Labs Agency</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>
+        <strong>FuturProof Labs</strong> | The Agency of Solutions<br>
+        <a href="https://futur-proof.com">futur-proof.com</a><br><br>
+        Questions? Contact us at hello@futur-proof.com
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>

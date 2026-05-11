@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transform Package - Luce Divina | FuturProof Labs</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    @media print {
+      body { font-size: 10pt; }
+      .page-break { page-break-before: always; }
+      .no-break { page-break-inside: avoid; }
+      @page { margin: 0.75in; size: letter; }
+    }
+
+    .container {
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0.75in;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 24px;
+      border-bottom: 3px solid #1a1a1a;
+      margin-bottom: 32px;
+    }
+
+    .logo img {
+      height: 80px;
+      width: auto;
+    }
+
+    .document-info {
+      text-align: right;
+      font-size: 9pt;
+      color: #666;
+    }
+
+    .document-info strong {
+      color: #1a1a1a;
+      font-size: 10pt;
+    }
+
+    .title-section {
+      text-align: center;
+      padding: 32px 0;
+      margin-bottom: 32px;
+    }
+
+    .title-section h1 {
+      font-size: 32pt;
+      font-weight: 300;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .title-section .badge {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 9pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 6px 16px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    .title-section .subtitle {
+      font-size: 14pt;
+      color: #666;
+      font-weight: 400;
+    }
+
+    .title-section .client {
+      margin-top: 24px;
+      font-size: 11pt;
+    }
+
+    .title-section .client strong {
+      font-size: 14pt;
+    }
+
+    .exec-summary {
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .exec-summary h2 {
+      font-size: 12pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #d4af37;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .exec-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .exec-summary-item {
+      text-align: center;
+    }
+
+    .exec-summary-item .label {
+      font-size: 9pt;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .exec-summary-item .value {
+      font-size: 18pt;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 4px;
+    }
+
+    .exec-summary-item .value.price {
+      color: #d4af37;
+    }
+
+    h2.section-title {
+      font-size: 14pt;
+      font-weight: 600;
+      color: #1a1a1a;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #1a1a1a;
+      margin-bottom: 20px;
+      margin-top: 32px;
+    }
+
+    .deliverable-section {
+      margin-bottom: 28px;
+    }
+
+    .deliverable-section h3 {
+      font-size: 12pt;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .deliverable-section h3 .icon {
+      width: 24px;
+      height: 24px;
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10pt;
+      font-weight: 600;
+    }
+
+    .deliverable-box {
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .deliverable-box ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .deliverable-box ul li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      border-bottom: 1px solid #eee;
+    }
+
+    .deliverable-box ul li:last-child {
+      border-bottom: none;
+    }
+
+    .deliverable-box ul li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #22c55e;
+      font-weight: 600;
+    }
+
+    .deliverable-box .item-title {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .deliverable-box .item-desc {
+      font-size: 9pt;
+      color: #666;
+      margin-top: 4px;
+      padding-left: 0;
+    }
+
+    .sub-list {
+      margin-top: 8px;
+      padding-left: 16px;
+    }
+
+    .sub-list li {
+      font-size: 9pt;
+      color: #666;
+      padding: 4px 0 !important;
+      padding-left: 16px !important;
+      border-bottom: none !important;
+    }
+
+    .sub-list li:before {
+      content: "→" !important;
+      color: #888 !important;
+    }
+
+    .timeline-section {
+      margin-top: 32px;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .timeline-item {
+      background: #f8f8f8;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .timeline-item .week {
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item h4 {
+      font-size: 11pt;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      font-size: 10pt;
+      color: #666;
+    }
+
+    .payment-section {
+      margin-top: 32px;
+      background: #f8f8f8;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .payment-section h3 {
+      font-size: 12pt;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .payment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .payment-option {
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 16px;
+      background: #fff;
+    }
+
+    .payment-option h4 {
+      font-size: 10pt;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .payment-step {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 10pt;
+    }
+
+    .payment-step .amount {
+      font-weight: 600;
+    }
+
+    .signature-section {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 2px solid #1a1a1a;
+    }
+
+    .signature-section h2 {
+      font-size: 14pt;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .signature-section p {
+      font-size: 10pt;
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .signature-box label {
+      font-size: 9pt;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .signature-line {
+      border-bottom: 1px solid #1a1a1a;
+      height: 40px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .date-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 9pt;
+      color: #888;
+    }
+
+    .date-line .line {
+      flex: 1;
+      border-bottom: 1px solid #ccc;
+      height: 20px;
+    }
+
+    .note {
+      font-size: 10pt;
+      color: #666;
+      font-style: italic;
+      margin-top: 16px;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+      border: 1px solid #d4af37;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 24px 0;
+    }
+
+    .highlight-box h4 {
+      color: #d4af37;
+      font-size: 11pt;
+      margin-bottom: 8px;
+    }
+
+    .highlight-box p {
+      font-size: 10pt;
+      color: #fff;
+    }
+
+    .includes-elevate {
+      background: #f0fdf4;
+      border: 1px solid #22c55e;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    .includes-elevate h4 {
+      color: #d4a520;
+      font-size: 14pt;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .includes-elevate p {
+      font-size: 9pt;
+      color: #166534;
+    }
+  </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5G9CL9B5"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <img src="futureproof-logo.png" alt="FutureProof">
+      </div>
+      <div class="document-info">
+        <strong>Scope of Work</strong><br>
+        Document #: FP-2026-003<br>
+        Date: January 11, 2026<br>
+        Valid for: 30 days
+      </div>
+    </header>
+
+    <!-- Title Section -->
+    <section class="title-section">
+      <div class="badge">Recommended</div>
+      <h1>Transform</h1>
+      <p class="subtitle">Complete Luxury E-commerce Experience</p>
+      <div class="client">
+        Prepared for<br>
+        <strong>Luce Divina Corp</strong>
+      </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section class="exec-summary no-break">
+      <h2>Package Summary</h2>
+      <div class="exec-summary-grid">
+        <div class="exec-summary-item">
+          <div class="label">Investment</div>
+          <div class="value price">$9,950</div>
+        </div>
+        <div class="exec-summary-item">
+          <div class="label">Timeline</div>
+          <div class="value">4-6 Weeks</div>
+        </div>
+        <div class="exec-summary-item">
+          <div class="label">Approach</div>
+          <div class="value">Full Build</div>
+        </div>
+        <div class="exec-summary-item">
+          <div class="label">Est. Hours</div>
+          <div class="value">78-97</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="highlight-box">
+      <h4>What This Package Delivers</h4>
+      <p>Transform is the complete luxury e-commerce experience—built to compete with Diptyque and Jo Malone. Interactive tools, advanced CRM, real-time tracking, and a site that converts browsers into buyers.</p>
+    </div>
+
+    <div class="includes-elevate">
+      <h4>✓ Includes Everything in Elevate ($4,950 value)</h4>
+      <p>Theme Enhancement, CRM Foundation, Content Pages, Performance & SEO — all included, plus the advanced features below.</p>
+    </div>
+
+    <!-- What's Included -->
+    <h2 class="section-title">What's Included</h2>
+
+    <!-- Theme Enhancement -->
+    <div class="deliverable-section no-break">
+      <h3><span class="icon">1</span> Theme Enhancement</h3>
+      <div class="deliverable-box">
+        <ul>
+          <li>
+            <span class="item-title">Modify existing Dawn theme</span>
+          </li>
+          <li>
+            <span class="item-title">Lifestyle imagery integration throughout site</span>
+          </li>
+          <li>
+            <span class="item-title">Micro-animations & hover transitions</span>
+            <ul class="sub-list">
+              <li>Button hover effects with smooth color/scale transitions</li>
+              <li>Product card lift & shadow on hover</li>
+              <li>Fade-in animations as sections scroll into view</li>
+              <li>Cart icon bounce when item is added</li>
+            </ul>
+          </li>
+          <li>
+            <span class="item-title">Custom sections (About, Craftsmanship, Brand Story)</span>
+          </li>
+          <li>
+            <span class="item-title">Mobile-optimized luxury experience</span>
+            <ul class="sub-list">
+              <li>Touch-friendly navigation with thumb-zone optimization</li>
+              <li>Swipeable product galleries</li>
+              <li>Sticky add-to-cart button for easy checkout</li>
+              <li>Optimized image sizes for faster mobile load times</li>
+            </ul>
+          </li>
+          <li>
+            <span class="item-title">Refined typography & spacing system</span>
+          </li>
+          <li>
+            <span class="item-title">Elevated color palette implementation</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CRM Integration -->
+    <div class="deliverable-section no-break">
+      <h3><span class="icon">2</span> Shopify-Native CRM Integration</h3>
+      <div class="deliverable-box">
+        <ul>
+          <li>
+            <span class="item-title">Automated customer tagging system</span>
+            <p class="item-desc">Customers are automatically labeled based on their behavior—first-time buyer, repeat customer, high-value, etc.—so you can send targeted emails and offers without manual work.</p>
+          </li>
+          <li>
+            <span class="item-title">Lifecycle stage tracking (new, active, at-risk)</span>
+            <p class="item-desc">See where each customer is in their journey. "New" just made first purchase, "Active" bought recently, "At-risk" hasn't purchased in 60+ days. Helps you know who needs a win-back email.</p>
+          </li>
+          <li>
+            <span class="item-title">B2B vs D2C contact separation</span>
+            <p class="item-desc">Wholesale buyers and retail customers have different needs. This separates them so you can send hotels/spas different communications than individual shoppers.</p>
+          </li>
+          <li>
+            <span class="item-title">Custom properties (scent preferences, purchase history)</span>
+            <p class="item-desc">Track what each customer loves—favorite scents, vessel preferences, gift vs personal use. Enables personalized recommendations like "Based on your love of sandalwood..."</p>
+          </li>
+          <li>
+            <span class="item-title">Customer notes & interaction logging</span>
+            <p class="item-desc">Every email, call, or special request is logged in one place. If a customer mentioned they're buying for their mother's birthday, you'll remember next time they shop.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Advanced CRM -->
+    <div class="deliverable-section no-break">
+      <h3><span class="icon">3</span> Advanced CRM & Segmentation</h3>
+      <div class="deliverable-box">
+        <ul>
+          <li>
+            <span class="item-title">Customer segmentation (VIP, one-time, dormant)</span>
+            <p class="item-desc">Automatically group customers: VIPs (top 10% spenders), One-time buyers (need nurturing), Dormant (haven't bought in 90+ days). Each group gets tailored marketing.</p>
+          </li>
+          <li>
+            <span class="item-title">Purchase behavior tracking</span>
+            <p class="item-desc">See patterns: How often do they buy? What's their average order? Do they buy gifts in November? Use this data to predict and prompt their next purchase.</p>
+          </li>
+          <li>
+            <span class="item-title">Order status lookup</span>
+            <p class="item-desc">Customers can check their order status anytime without emailing you. Reduces support tickets and increases trust.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Content Pages -->
+    <div class="deliverable-section no-break">
+      <h3><span class="icon">4</span> Content Pages</h3>
+      <div class="deliverable-box">
+        <ul>
+          <li>
+            <span class="item-title">Blog page development</span>
+          </li>
+          <li>
+            <span class="item-title">About/Story pages</span>
+          </li>
+          <li>
+            <span class="item-title">Product page enhancements</span>
+            <ul class="sub-list">
+              <li>Scent notes breakdown (Top, Heart, Base notes)</li>
+              <li>Burn time & room size recommendations</li>
+              <li>"Complete the Experience" cross-sell section</li>
+              <li>Trust badges (Organic, Non-Toxic, Sustainable)</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Interactive Tools -->
+    <div class="deliverable-section no-break">
+      <h3><span class="icon">5</span> Interactive Tools & Features</h3>
+      <div class="deliverable-box">
+        <ul>
+          <li>
+            <span class="item-title">Scent Finder Quiz integration</span>
+            <p class="item-desc">4-6 question quiz that matches customers to their perfect scent. Captures email, increases engagement, and reduces "which should I buy?" hesitation.</p>
+          </li>
+          <li>
+            <span class="item-title">Product recommendations by scent preference</span>
+          </li>
+          <li>
+            <span class="item-title">Burn Time Calculator</span>
+            <p class="item-desc">Customers input room size, get recommended candle size and estimated burn hours. Builds confidence in purchase decision.</p>
+          </li>
+          <li>
+            <span class="item-title">AR Room Visualizer — see candles in your space via mobile camera</span>
+            <p class="item-desc">Point phone camera at table, see how the candle looks in their actual room. Reduces "will this fit my space?" uncertainty.</p>
+          </li>
+          <li>
+            <span class="item-title">Build-Your-Own Gift Set</span>
+            <p class="item-desc">Customers select candle + matches + tray to create custom gift. Increases AOV and makes gifting effortless.</p>
+          </li>
+          <li>
+            <span class="item-title">Personalization/Engraving Preview</span>
+            <p class="item-desc">See their custom text on the candle before ordering. Visual confirmation reduces returns and increases personalization orders.</p>
+          </li>
+          <li>
+            <span class="item-title">Ingredient Transparency Checker</span>
+            <p class="item-desc">Click any ingredient to see what it is and why it's used. Builds trust with health-conscious luxury buyers.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Notifications -->
+    <div class="deliverable-section no-break">
+      <h3><span class="icon">6</span> Notifications & Tracking</h3>
+      <div class="deliverable-box">
+        <ul>
+          <li>
+            <span class="item-title">Cart abandonment push notifications</span>
+            <p class="item-desc">Browser notifications remind customers about items left in cart—works even when they're not on your site.</p>
+          </li>
+          <li>
+            <span class="item-title">Sales & order notifications</span>
+            <p class="item-desc">Real-time alerts when orders come in. Stay connected to your business from anywhere.</p>
+          </li>
+          <li>
+            <span class="item-title">Real-time shipment status w/ map visualization</span>
+            <p class="item-desc">Customers see exactly where their package is on a map. Premium experience that reduces "where's my order?" emails.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Performance -->
+    <div class="deliverable-section no-break">
+      <h3><span class="icon">7</span> Performance & SEO</h3>
+      <div class="deliverable-box">
+        <ul>
+          <li>
+            <span class="item-title">Image optimization for faster load times</span>
+          </li>
+          <li>
+            <span class="item-title">Core Web Vitals improvements</span>
+            <ul class="sub-list">
+              <li>LCP (Largest Contentful Paint) — hero images load in under 2.5 seconds</li>
+              <li>FID (First Input Delay) — buttons respond instantly when clicked</li>
+              <li>CLS (Cumulative Layout Shift) — no jumping content as page loads</li>
+              <li>TTFB (Time to First Byte) — server responds quickly</li>
+              <li>INP (Interaction to Next Paint) — smooth scrolling and interactions</li>
+            </ul>
+          </li>
+          <li>
+            <span class="item-title">Basic on-page SEO setup</span>
+            <ul class="sub-list">
+              <li>Title tags & meta descriptions optimized for each page</li>
+              <li>Header hierarchy (H1, H2, H3) properly structured</li>
+              <li>Image alt text for accessibility and search visibility</li>
+            </ul>
+          </li>
+          <li>
+            <span class="item-title">Meta tags & structured data</span>
+            <p class="item-desc"><strong>What it is:</strong> Code that tells Google exactly what your products are—price, availability, reviews, brand. <strong>Why it matters:</strong> Enables rich snippets in search results (star ratings, prices) which increase click-through rates by up to 30%.</p>
+          </li>
+          <li>
+            <span class="item-title">Mobile performance optimization</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+      <h2 class="section-title">Project Timeline</h2>
+      <div class="timeline-grid">
+        <div class="timeline-item">
+          <div class="week">Week 1</div>
+          <h4>Discovery & Design</h4>
+          <p>Theme audit, design direction, imagery selection, CRM strategy planning</p>
+        </div>
+        <div class="timeline-item">
+          <div class="week">Week 2</div>
+          <h4>Core Development</h4>
+          <p>Theme modifications, custom sections, animations, content pages</p>
+        </div>
+        <div class="timeline-item">
+          <div class="week">Week 3</div>
+          <h4>CRM & Integrations</h4>
+          <p>CRM setup, tagging system, segmentation, email integrations</p>
+        </div>
+        <div class="timeline-item">
+          <div class="week">Week 4</div>
+          <h4>Interactive Features</h4>
+          <p>Quiz integration, AR visualizer, gift set builder, calculators</p>
+        </div>
+        <div class="timeline-item">
+          <div class="week">Week 5</div>
+          <h4>Notifications & Tracking</h4>
+          <p>Push notifications, order tracking, shipment visualization, alerts setup</p>
+        </div>
+        <div class="timeline-item">
+          <div class="week">Week 6</div>
+          <h4>Testing & Launch</h4>
+          <p>QA testing, mobile review, performance optimization, SEO setup, go-live</p>
+        </div>
+      </div>
+      <div class="timeline-item" style="margin-top: 16px;">
+        <div class="week">Post-Launch</div>
+        <h4>14 Days Support</h4>
+        <p>Bug fixes, minor adjustments, handoff documentation, team training on new features</p>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- Payment -->
+    <section class="payment-section">
+      <h3>Payment Terms</h3>
+      <div class="payment-grid">
+        <div class="payment-option">
+          <h4>Option A: Two Payments</h4>
+          <div class="payment-step">
+            <span>50% deposit to start</span>
+            <span class="amount">$4,975</span>
+          </div>
+          <div class="payment-step">
+            <span>50% upon completion</span>
+            <span class="amount">$4,975</span>
+          </div>
+        </div>
+        <div class="payment-option">
+          <h4>Option B: Three Payments</h4>
+          <div class="payment-step">
+            <span>40% deposit to start</span>
+            <span class="amount">$3,980</span>
+          </div>
+          <div class="payment-step">
+            <span>30% at staging review</span>
+            <span class="amount">$2,985</span>
+          </div>
+          <div class="payment-step">
+            <span>30% upon launch</span>
+            <span class="amount">$2,985</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="note">Includes 2 rounds of revisions per phase and 14 days post-launch support. Handoff documentation and team training provided.</p>
+
+    <!-- Signature -->
+    <section class="signature-section no-break">
+      <h2>Acceptance</h2>
+      <p>By signing below, you agree to the scope, timeline, and investment outlined in this document.</p>
+
+      <div class="signature-grid">
+        <div class="signature-box">
+          <label>Client Signature</label>
+          <div class="signature-line"></div>
+          <div class="date-line">
+            <span>Date:</span>
+            <div class="line"></div>
+          </div>
+        </div>
+        <div class="signature-box">
+          <label>FuturProof Labs Representative</label>
+          <div class="signature-line"></div>
+          <div class="date-line">
+            <span>Date:</span>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
